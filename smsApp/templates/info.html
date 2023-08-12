@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<!--t5 pannel  -->
+<br>
+<div class="card shadow-lg">
+    <div class="card-header">
+      Nimbusit.info
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-5">
+            <h4> Check balance </h4>
+            <form method="Get">
+                <div class="form-group">
+                <label >user name</label>
+                <input type="text" class="form-control"  placeholder="User id" name="user">
+                <label >Password</label>
+                <input type="text" class="form-control"  placeholder="Password" name="Password">
+                </div>
+                <button type="submit" class="btn btn-Secondary">Check Balance</button>
+            </form>
+            <Div>
+                <H6>Your Balance is: {{data.Response.Balance}} </H6>
+            </Div>
+            <hr>
+           
+        </div>
+        <!-- api secting bigning-->
+        <div class="col-md-7" >
+                <h4>Send SMS And create API</h4>
+                <!--api from bigning-->
+                <form method="Get" action="sendSMS">
+                    <div class="row">
+                        <div class="col"><label >UserID</label>
+                            <input type="text" class="form-control "  placeholder="User id" name="user"></div>
+                        <div class="col"><label >Password</label>
+                            <input type="text" class="form-control"  placeholder="Password" name="Password"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <label >SenderID</label>
+                            <input type="text" class="form-control"  placeholder="SenderID" name="SenderID">
+                        </div>
+                        <div class="col">
+                            <label >Phno</label>
+                            <input type="text" class="form-control"  placeholder="Phno" name="Phno">
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col">
+                            <label >EntityID</label>
+                            <input type="text" class="form-control"  placeholder="EntityID" name="EntityID">
+                        </div>
+                        <div class="col">
+                            <label >TemplateID</label>
+                    <input type="text" class="form-control"  placeholder="TemplateID" name="TemplateID">
+                        </div>
+                    </div>                    
+                    
+                    <label >Msg</label>
+                    <input type="text" class="form-control"  placeholder="Msg" name="Msg">
+                    <br>
+                    
+                    <button type="submit" class="btn btn-Secondary">Send SMS</button> {{datas}}
+                </form>
+                <!--api from end-->
+        </div>
+        <!-- api secting bigning-->
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+        <p>{{urls}}</p>
+    </div>
+  </div>
+  <br>
+<!---t5 Panel end-->
+
+{% endblock %}
