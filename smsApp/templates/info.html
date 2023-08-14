@@ -7,13 +7,14 @@
 <br>
 <div class="card shadow-lg">
     <div class="card-header">
-      Nimbusit.info
+      Nimbusit.net
     </div>
     <div class="card-body">
       <div class="row">
         <div class="col-md-5">
             <h4> Check balance </h4>
             <form method="Get">
+                {% csrf_token %}
                 <div class="form-group">
                 <label >user name</label>
                 <input type="text" class="form-control"  placeholder="User id" name="user">
@@ -23,7 +24,8 @@
                 <button type="submit" class="btn btn-Secondary">Check Balance</button>
             </form>
             <Div>
-                <H6>Your Balance is: {{data.Response.Balance}} </H6>
+                <H6>Your {{response.text}}</H6>
+                
             </Div>
             <hr>
            

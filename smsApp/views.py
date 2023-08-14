@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import requests
+from urllib.parse import urlencode
+import json
+
 
 # Create your views here.
 def home(request):
@@ -34,5 +37,25 @@ def sendSMS(request):
     }
     return render(request, 'balance.html', context)
 
-def info(request):
-    return render(request, 'info.html')
+net_key='92dxh8MRpTO7U'
+
+def net(request):
+    user=request.GET.get('user')
+    print(user)
+    key=request.GET.get('Password')
+    print(key)
+    payload={}
+    headers={}
+    url=f"http://nimbusit.net/api/balance?user={user}&authkey={key}"
+    response=requests.request("GET",url, headers=headers,data=payload)
+    print(response.text)
+    # url = "http://nimbusit.net/api/balance?user=riyawhite&authkey=92dxh8MRpTO7U"
+
+    # payload = {}
+    # headers = {}
+
+    # response = requests.request("GET", url, headers=headers, data=payload)
+
+    # print(response.text)
+  
+    return render(request, 'info.html',{'response':response})
